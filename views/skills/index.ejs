@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Skills</title>
+</head>
+<body>
+    <h1>Skills</h1>
+    <ul>
+        <% skills.forEach((s)=>{ %>
+            <a href="/skills/<%=s.id%>"><%= s.name %></a>
+            <li><%= s.skill %></li>
+      <%  }) %>
+    </ul>
+    <a href="/skills/new">Add Skills</a>
+    <a href="/">Go back</a>
+</body>
+</html>
