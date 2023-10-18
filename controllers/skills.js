@@ -23,11 +23,42 @@ const newSkill = (req,res) =>{
 }
 
 
+const create = (req, res) =>{
+    Skill.create(req.body);
+    console.log(req.body);
+    res.redirect('/skills')
+}
+
+
+const deleteSkill = (req, res) => {
+  Skill.deleteOne(req.params.id);
+  res.redirect("/skills");
+};
+
+const edit = (req, res) =>{
+    const skill = Skill.getOne(req.params.id);
+    res.render('skills/edit',{
+        title: 'Edit Skill',
+        skill: skill
+    })
+    
+}
+
+
+const update = (req, res) =>{
+    Skill.update(req.params.id, req.body);
+    res.redirect(`/skills/${req.params.id}`);
+}
+
 
 
 
 module.exports = {
     index,
     show,
-    new: newSkill
+    new: newSkill,
+    create,
+    edit,
+    delete: deleteSkill,
+    update
 }
